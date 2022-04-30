@@ -19,3 +19,9 @@ Instrucciones:
 La carpeta Descifrar, que esta compuesta por Descifrar.cpp, Descifrar.h y main.cpp, es un algoritmo aparte de Inverso asi que se separa en un proyecto aparte para compilar correctamente el resultado.
 
 Lo mismo con el proyecto Inverso el cual esta compuesto por Inverso.cpp, Inverso.h y main.cpp.
+
+Nota:
+
+El proyecto Descifrar es unicamente para la frase asignada a descifrar.
+
+De preferencia compilarlo en Replit o Xcode.

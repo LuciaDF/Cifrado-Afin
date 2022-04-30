@@ -1,5 +1,7 @@
 #include "Descifrar.h"
 
+#include "Descifrar.hpp"
+
 char A[27]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 int b[]={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26};
@@ -13,53 +15,66 @@ int a1,b1;
 void p_datos()
 {
     string f_cifrada;
-    cout<<"----CIFRAR FRASE----"<<endl;
+    cout<<"----DESCIFRAR FRASE----"<<endl;
     
     cout<<"Dijite frase: ";getline(cin,f_cifrada);
     
     int s=f_cifrada.length();
     
-    int tamr=0;
-    for(int i=0;i<s;i++)
+    
+    if (s<60)
     {
-        if(f_cifrada[i]==126)
+        cout<<"Ingrese la frase designada. "<<endl;
+        exit(1);
+    }
+    else
+    {
+        
+        // tamr es la cantidad de ñ que encunetra y la restamos con largo del string para que pueda salir sin doble letra.
+        
+        int tamr=0;
+        for(int i=0;i<s;i++)
         {
-            tamr++;
-            i++;
+            if(f_cifrada[i]==126)
+            {
+                tamr++;
+                i++;
+            }
         }
-    }
-    char f_c[s-tamr];
-    
-    int n_c[s-tamr];
-    
-    int tamo=s-tamr;
-    
-    cout<<tamo<<endl;
-    strcpy(f_c,f_cifrada.c_str());
-    
-    ConvertirNum(f_c,n_c);
-    
-    
-    
-    /*
-    for(char *p=f_cifrada;p<f_cifrada+11;p++)
-    {
-        //cout<<*p<<endl;
         
-    }
-    
-    for(int *p=n_cifrada;p<n_cifrada+8;p++)
-    {
-        //cout<<*p<<endl;
+        cout<<tamr<<endl;
         
-    }
-    */
+        // Como s =60 y tamr = 4 entonces el tamaño oficial de la frase a descifrar es 56
+        
+        char f_c[s-tamr];
+        
+        int n_c[s-tamr];
+        
+        
+        strcpy(f_c,f_cifrada.c_str());
+        
+        // Cambiarlo por strcpy_s si usa Visual Code
+        
+        ConvertirNum(f_c,n_c);
+        
+        
+        
+        
+        char Tam_peq[27][18][56]; // probemos solo con A y B
+        
+        Llenar3D(Tam_peq, n_c, as, b);
+        
+        Imprimir3D(Tam_peq);
+         
+         
+
+        
+        
+     }
+  
     
-    char Tam_peq[27][18][56]; // probemos solo con A y B
     
-    Llenar3D(Tam_peq, n_c, as, b);
     
-    Imprimir3D(Tam_peq);
     
 }
 int BusquedaNum(char x)
